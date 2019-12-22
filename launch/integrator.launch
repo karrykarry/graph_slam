@@ -2,7 +2,9 @@
 <launch>
     <!--map integrator-->
     <node pkg="graph_slam" type="integrator" name="integrator" output="screen">
-        <param name="tf_name" type="string" value="/data/csv/2.csv" />
-        <param name="map_name" type="string" value="/data/map/2.pcd" />
+		<param name="cloud_path" type="string" value="/data/pcd/" />                           
+		<param name="tf_name" type="string" value="/data/csv/" />
+		<param name="map_name" type="string" value="/data/map/" />
+		<param name="voxel_size" value="0.3" />
     </node>
 </launch>

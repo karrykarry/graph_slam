@@ -3,7 +3,8 @@
     <arg name="wheel" default="/tinypower/odom" />
     <arg name="gyro" default="/imu/data" />
     <arg name="topic" default="/odom/complement" />
-    <arg name="drift" default="-0.00159716" />
+    <arg name="drift_pitch" default="0.0014076" />
+    <arg name="drift_yaw" default="-0.00159716" />
     <arg name="global_frame" default="/map" />
     <arg name="child_frame" default="/base_link"/>
 
@@ -16,11 +17,12 @@
       <param name="complement/child_frame"  value="$(arg child_frame)" />
     </node-->
 
-    <node pkg="graph_slam" type="gyro_odometry" name="gyro_odometry">
+    <node pkg="graph_slam" type="gyro_odometry" name="gyro_odometry" output="screen">
       <param name="topic_name/wheel" value="$(arg wheel)" />
       <param name="topic_name/gyro" value="$(arg gyro)" />
       <param name="topic_name/odom_complement" value="$(arg topic)" />
-      <param name="dyaw/drift" value="$(arg drift)" />
+      <param name="dpitch/drift" value="$(arg drift_pitch)" />
+      <param name="dyaw/drift" value="$(arg drift_yaw)" />
       <param name="complement/global_frame" value="$(arg global_frame)" />
       <param name="complement/child_frame"  value="$(arg child_frame)" />
     </node>

@@ -2,6 +2,8 @@
 <!--remove cluster-->
 <launch>
   <node pkg="graph_slam" type="slam3d" name="slam3d" output="screen">
-    <param name="DISTANCE" type="double" value="1.0" />
+	  <param name="cloud_path" type="string" value="/data/pcd/" />
+	  <param name="tf_name" type="string" value="/data/csv/" />
+	  <param name="DISTANCE" type="double" value="1.0" />
   </node>
 </launch>

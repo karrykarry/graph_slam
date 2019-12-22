@@ -77,6 +77,10 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_ros
 )
 
+
+include_directories(include/graph_slam)
+
+
 include_directories(
     include
     ${catkin_INCLUDE_DIRS}
@@ -84,22 +88,22 @@ include_directories(
 )
 
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES graph_slam
 #  CATKIN_DEPENDS geoemtry_msgs nav_msgs roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
 add_library(${PROJECT_NAME} SHARED
-    src/G2O.cpp
-    src/System.cpp
-    src/Gicp.cpp
-    src/Util.cpp
-    src/File.cpp
-    src/PCL.cpp
-    src/ICP.cpp
-    src/LoopCloser.cpp
-    src/GraphSlam.cpp
+    library/G2O.cpp
+    library/System.cpp
+    library/Gicp.cpp
+    library/Util.cpp
+    library/File.cpp
+    library/PCL.cpp
+    library/ICP.cpp
+    library/LoopCloser.cpp
+    library/GraphSlam.cpp
 )
 target_link_libraries(${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o_core.so
@@ -112,33 +116,34 @@ target_link_libraries(${PROJECT_NAME}
     ${Eigen_LIBRARIES}
 )
 
-add_executable(gyro_odometry Examples/ROS/gyro_odometry.cpp)
+add_executable(gyro_odometry src/gyro_odometry.cpp)
 target_link_libraries(gyro_odometry
     ${catkin_LIBRARIES}
 )
 
-add_executable(saver Examples/ROS/saver.cpp)
+
+add_executable(saver src/saver.cpp)
 target_link_libraries(saver
     ${catkin_LIBRARIES}
     ${PCL_LIBRARIES}
 )
 
-add_executable(rm_cluster Examples/ROS/rm_cluster.cpp)
+add_executable(rm_cluster src/rm_cluster.cpp)
 target_link_libraries(rm_cluster
     ${PROJECT_NAME}
 )
 
-add_executable(integrator Examples/ROS/integrator.cpp)
+add_executable(integrator src/integrator.cpp)
 target_link_libraries(integrator
     ${PROJECT_NAME}
 )
 
-add_executable(node_edge Examples/SLAM/node_edge.cpp)
+add_executable(node_edge src/node_edge.cpp)
 target_link_libraries(node_edge
     ${PROJECT_NAME}
 )
 
-add_executable(slam3d Examples/SLAM/slam3d.cpp)
+add_executable(slam3d src/slam3d.cpp)
 target_link_libraries(slam3d
     ${PROJECT_NAME}
 )
