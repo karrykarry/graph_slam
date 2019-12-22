@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+
+	<node pkg="graph_slam" type="node_selector" name="node_selector" output="screen"/>
+
+    <node pkg="tf" type="static_transform_publisher" name="base2lidar"
+		args="0 0 1.300 0 0 0 /base_link /velodyne 100" />
+
+</launch>
+

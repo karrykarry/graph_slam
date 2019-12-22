@@ -148,6 +148,13 @@ target_link_libraries(slam3d
     ${PROJECT_NAME}
 )
 
+
+add_executable(node_selector src/node_selector.cpp  library/File.cpp)
+target_link_libraries(node_selector
+    ${catkin_LIBRARIES}
+)
+
+
 # add_executable(loop_closer Examples/SLAM/loop_closer.cpp)
 # target_link_libraries(loop_closer
 #   ${PROJECT_NAME}
