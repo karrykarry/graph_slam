@@ -214,7 +214,7 @@ void NodeEdge<T_p>::main()
     tf::Transform transform;
 
     Eigen::Matrix4d check = gicp_matrix - Eigen::Matrix4d::Identity();
-    if(check.norm() < 1.0){
+    if(check.norm() < 0.5){
         affine = gicp_affine.inverse() * edge_affine;
     }
     else{

@@ -8,7 +8,7 @@ Node_Selector<T_p>::Node_Selector(ros::NodeHandle n, ros::NodeHandle private_nh_
 
 
 	node_pub = n.advertise<sensor_msgs::PointCloud2>("/node", 1, true);
-	pc_publisher = n.advertise<sensor_msgs::PointCloud2>("/velodyne_points/graph_slam", 1);
+	pc_publisher = n.advertise<sensor_msgs::PointCloud2>("/velodyne_points/slam", 1);
 
 }
 
@@ -78,18 +78,17 @@ Node_Selector<T_p>::pc_pub(const int cnt_){
 	std::cout<<file_pcd<<std::endl;
 	typename pcl::PointCloud<T_p>::Ptr output_pc(new pcl::PointCloud<T_p>);	
 	typename pcl::PointCloud<T_p>::Ptr trans_output_pc(new pcl::PointCloud<T_p>);	
-	!file->loadCloud<T_p>(output_pc, file_pcd);
+	file->loadCloud<T_p>(output_pc, file_pcd);
 	
 	tf::Transform tf = transforms[cnt_].transform; 
     pcl_ros::transformPointCloud(*output_pc, *trans_output_pc, tf);
 
 	br.sendTransform(tf::StampedTransform(tf, ros::Time::now(), "/map", "/base_link"));
 
-
 	sensor_msgs::PointCloud2 pc;
 	pcl::toROSMsg(*output_pc, pc);
-	pc.header.frame_id  = "/base_link";	
-	pc.header.stamp  = ros::Time::now();
+	pc.header.frame_id  = "/velodyne";	
+	pc.header.stamp  = ros::Time(0);
 	pc_publisher.publish(pc);
 }
 

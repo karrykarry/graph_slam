@@ -27,8 +27,6 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: PointCloud2
-Toolbars:
-  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -88,9 +86,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 0.943231523
+      Max Intensity: 0.889811277
       Min Color: 0; 0; 0
-      Min Intensity: 0.000280939857
+      Min Intensity: 0.000194744018
       Name: PointCloud2
       Position Transformer: XYZ
       Queue Size: 10
@@ -170,25 +168,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 471.573486
+      Distance: 399.231567
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -1.93910694
-        Y: 4.75119209
-        Z: 1.45867193
+        X: -12.6174002
+        Y: 3.95467591
+        Z: 1.62907767
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.49479723
+      Pitch: 1.55479717
       Target Frame: velodyne
       Value: Orbit (rviz)
-      Yaw: 0.185404703
+      Yaw: 6.25359106
     Saved: ~
 Window Geometry:
   Displays:

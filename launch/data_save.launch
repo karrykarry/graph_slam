@@ -9,28 +9,31 @@
     <arg name="topic" default="/odom/complement" />
     <arg name="drift_pitch" default="0.0014076" />
     <!-- <arg name="drift_yaw" default="-0.00259716" /> -->
-    <arg name="drift_yaw" default="-0.00159716" />
+    <!-- <arg name="drift_yaw" default="&#45;0.00159716" /> -->
+    <arg name="drift_yaw" default="-0.00124716" />
     <arg name="global_frame" default="/map" />
     <arg name="child_frame" default="/base_link"/>
 
+    <include file="$(find human_detection)/launch/human_for_3dmap.launch" />
+
     <!--Normal Estimation-->
-	<node pkg="perfect_velodyne" type="normal_estimation_refine_smoothing" name="NormalEstimationForVelodyne">
-		<param name="HNN" value="3l" />
-		<param name="MAX_RANGE" value="120.0f" />
-		<!-- <param name="MIN_RANGE" value="$(arg min)" /> -->
-		<param name="MIN_RANGE" value="0.5f" />
-		<param name="VR" value="1.00f" />
-		<!-- <param name="VR" value="0.839f" /> -->
-		<!-- <param name="VR" value="0.5034f" /> -->
-		<param name="skip" value="2.0f" />
-		<!-- <param name="skip" value="1.0f" /> -->
-		<param name="vector_horizon" value="0.1f" />
-		<param name="vector_vertical" value="1.5f" />
-		<param name="DENS" value="0.5f" />
-		<param name="CURV" value="0.1f" />
-        <param name="DISP" value="1l" />
-        <remap from="/velodyne_points" to="rm_cluster/removed_points"/>
-    </node>
+	<!-- <node pkg="perfect_velodyne" type="normal_estimation_refine_smoothing" name="NormalEstimationForVelodyne"> -->
+	<!-- 	<param name="HNN" value="3l" /> -->
+	<!-- 	<param name="MAX_RANGE" value="120.0f" /> -->
+	<!-- 	<!&#45;&#45; <param name="MIN_RANGE" value="$(arg min)" /> &#45;&#45;> -->
+	<!-- 	<param name="MIN_RANGE" value="0.5f" /> -->
+	<!-- 	<param name="VR" value="1.00f" /> -->
+	<!-- 	<!&#45;&#45; <param name="VR" value="0.839f" /> &#45;&#45;> -->
+	<!-- 	<!&#45;&#45; <param name="VR" value="0.5034f" /> &#45;&#45;> -->
+	<!-- 	<param name="skip" value="2.0f" /> -->
+	<!-- 	<!&#45;&#45; <param name="skip" value="1.0f" /> &#45;&#45;> -->
+	<!-- 	<param name="vector_horizon" value="0.1f" /> -->
+	<!-- 	<param name="vector_vertical" value="1.5f" /> -->
+	<!-- 	<param name="DENS" value="0.5f" /> -->
+	<!-- 	<param name="CURV" value="0.1f" /> -->
+    <!--     <param name="DISP" value="1l" /> -->
+    <!--     <remap from="/velodyne_points" to="rm_cluster/removed_points"/> -->
+    <!-- </node> -->
 
     <node pkg="graph_slam" type="gyro_odometry" name="gyro_odometry" output="screen">
       <param name="topic_name/wheel" value="$(arg wheel)" />
